@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -29,6 +28,19 @@ public class WordRestClient {
 	public String getSynonyms(String orig) {
 		try {
 			HttpResponse<String> response = Unirest.get(wordsUrl + orig + "/synonyms")
+					.header(hostName, hostValue)
+					.header(apiKeyName, apiKeyValue)
+					.asString();
+			return(response.getBody());
+		} catch (UnirestException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String getPlural(String orig) {
+		try {
+			HttpResponse<String> response = Unirest.get(wordsUrl + orig + "/plural")
 					.header(hostName, hostValue)
 					.header(apiKeyName, apiKeyValue)
 					.asString();

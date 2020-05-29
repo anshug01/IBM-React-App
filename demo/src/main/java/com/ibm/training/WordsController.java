@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mashape.unirest.http.JsonNode;
-
 @RestController
 public class WordsController {
 	
@@ -19,5 +17,10 @@ public class WordsController {
 	String synonymGet(@PathVariable String orig) {
 		return wordClient.getSynonyms(orig);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@RequestMapping("/plural/{orig}")
+	String pluralGet(@PathVariable String orig) {
+		return wordClient.getPlural(orig);
+	}
 }
