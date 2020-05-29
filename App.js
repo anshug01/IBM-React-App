@@ -16,20 +16,26 @@ class App extends Component{
     if(word){
       const api_call = await fetch(`http://localhost:8080/synonym/${word}`)
       const data = await api_call.json()
+      //console.log(word);
+      // if((data.cod = "404")){
+      //   this.setState({
+      //     word : undefined,
+      //     synonym : undefined
+      //   });
+      // }
+      // else{
+      //   console.log(word);
+      //   this.setState({
+      //     word : word,
+      //     synonym : data.array,
+      //   });
+      // }
+      this.setState({
+        word : word,
+        synonym : JSON.stringify(data)
+      });
       console.log(word);
-      if((data.cod = "404")){
-        this.state({
-          word : undefined,
-          synonym : undefined
-        })
-      }
-      else{
-        console.log(word);
-        this.state({
-          word : word,
-          synonym : data.array,
-        })
-      }
+      console.log(typeof data);
     }
   }
 
