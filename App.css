@@ -5,9 +5,9 @@ body {
 .wrapper {
   background: linear-gradient(to right, #228ee6, #3f3ce7);
   height: 100vh;
-  /* display: -webkit-autofill; */
-  justify-content: flex-start;
-  align-items: flex-start;
+  display : flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main {
